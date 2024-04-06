@@ -13,12 +13,12 @@ escrow_ignore {
     'config.lua'
 }
 
-client_script {
+client_scripts {
     "config.lua",
     "client.lua",
 }
 
-server_script {
+server_scripts {
     "config.lua",
     "@mysql-async/lib/MySQL.lua",
     "server.lua" ,
