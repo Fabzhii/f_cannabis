@@ -141,7 +141,8 @@ function checkcoords()
 end 
 
 function place()
-
+    LocalPlayer.state.invBusy = true
+    LocalPlayer.state.invHotkeys = false
 
     local ped = PlayerPedId()
     local pedCoords = GetEntityCoords(ped)
@@ -152,7 +153,8 @@ function place()
     canplace = true 
 
     for k,v in pairs(plants) do 
-        local dist = #(v[1] - pos)
+        local pos = v[1]
+        local dist = #(pos - coords)
         if dist < Config.SpacingDist then 
             canplace = false 
 	    print('dist error')
@@ -178,7 +180,9 @@ function place()
 
         TriggerServerEvent('fcannabis:removeItem', 'cannabis_seed', 1)
         TriggerServerEvent('fcannabis:plantSQL', pos, unique)
-
+	Citizen.Wait(500)
+	LocalPlayer.state.invBusy = false
+    	LocalPlayer.state.invHotkeys = true
     else 
         Config.Notifcation(locales['cant_place'])
     end 
