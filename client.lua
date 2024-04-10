@@ -152,10 +152,10 @@ function place()
     canplace = true 
 
     for k,v in pairs(plants) do 
-        local pos = v[1]
-        local dist = #(coords - pos)
+        local dist = #(v[1] - pos)
         if dist < Config.SpacingDist then 
             canplace = false 
+	    print('dist error')
         end 
     end 
 
