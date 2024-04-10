@@ -23,7 +23,7 @@ Citizen.CreateThread(function()
                 local time = v.time + 1
                 if time > Config.Stages[v.stage].time + 10 then 
                     MySQL.Async.execute('DELETE FROM f_cannabis WHERE plantid = @plantid', {
-                        ['@plantid']  = plantid,
+                        ['@plantid']  = v.plantid,
                     })
                     Citizen.Wait(500)
                     TriggerClientEvent('fcannabis:deletePlant', -1, plantid)
