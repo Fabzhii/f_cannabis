@@ -105,7 +105,7 @@ end)
 
 -- Place Weed 
 
-exports('plant', function()
+exports('plant', function() -- limit uses
     ESX.TriggerServerCallback('fcannabis:checkcount', function(xCount)
         if xCount >= Config.Cops then 
             checkcoords()
@@ -141,8 +141,6 @@ function checkcoords()
 end 
 
 function place()
-    LocalPlayer.state.invBusy = true
-    LocalPlayer.state.invHotkeys = false
 
     local ped = PlayerPedId()
     local pedCoords = GetEntityCoords(ped)
@@ -181,8 +179,6 @@ function place()
         TriggerServerEvent('fcannabis:removeItem', 'cannabis_seed', 1)
         TriggerServerEvent('fcannabis:plantSQL', pos, unique)
 	Citizen.Wait(500)
-	LocalPlayer.state.invBusy = false
-    	LocalPlayer.state.invHotkeys = true
     else 
         Config.Notifcation(locales['cant_place'])
     end 
