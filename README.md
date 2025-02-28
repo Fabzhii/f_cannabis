@@ -5,4 +5,4 @@ A FiveM script to plant Cannabis
 
 | Command         | Description                         | Parameter(s)    |
 |-----------------|-------------------------------------|-----------------|
-| clearcannabis     |  Clears all plants                   | bnone     |
+| clearcannabis     |  Clears all plants                   | `none`     |
